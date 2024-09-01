@@ -11,30 +11,33 @@ const Header = () => {
   const { isSignedIn } = useAuth();
 
   return (
-    <header className="w-full border-b">
-      <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36" aria-label="Go to homepage">
+    <header className="w-full border-b py-4">
+      <div className="wrapper flex items-center justify-between relative">
+        <nav className='md:flex hidden max-w-xs'>
+          <SignedIn>
+            <NavItems />
+          </SignedIn>
+        </nav>
+
+        {/* Centered Logo */}
+        <Link href="/" className="absolute left-1/2 transform -translate-x-1/2" aria-label="Go to homepage">
           <Image 
             src="/assets/images/logo.png" 
-            width={110} 
-            height={10}
+            width={2000} 
+            height={2000}
             alt="PYOP logo" 
+            className="w-36"
           />
         </Link>
-        <SignedIn>
-          <nav className='md:flex-between hidden w-full max-w-xs'>
-            <NavItems />
-          </nav>
-        </SignedIn>
-        <div className="flex w-32 justify-end gap-3">
+
+        {/* Right-aligned User actions */}
+        <div className="ml-auto flex items-center gap-3">
           <SignedIn>
             <UserButton afterSignOutUrl='/' />
             <MobileNav />
           </SignedIn>
           <SignedOut>
-            <Button asChild className='rounded-full' size='sm'>
-              <Link href="/sign-in">Login</Link>
-            </Button>
+            
           </SignedOut>
         </div>
       </div>
