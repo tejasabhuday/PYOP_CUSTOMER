@@ -1,5 +1,4 @@
 import { type ClassValue, clsx } from 'clsx'
-
 import { twMerge } from 'tailwind-merge'
 import qs from 'query-string'
 
@@ -51,7 +50,7 @@ export const formatPrice = (price: string) => {
   const amount = parseFloat(price)
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'Rupees',
   }).format(amount)
 
   return formattedPrice
